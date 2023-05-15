@@ -2,13 +2,18 @@ const express = require('express')
 const moment = require('moment')
 
 const PORT = process.env.PORT
-const HOST = '0.0.0.0'
+const HOST = '173.12.15.10'
 
 const app = express()
 app.set('trust proxy', ['uniquelocal'])
 
 
 app.get('/', (req, res, next) => {
+  if(req.headers['resource-from'] !== 'https://github.com/KILLYOUGUTSXXX') { // validate the incoming request, make sure the headers including key "resource-from" & correct values.
+    res.statusCode = 403
+    return res.end('<p style="color:red;font-size:52px;">Access Denied</p>')
+  }
+  
   return res.end(JSON.stringify({
     success: false,
     data: {
