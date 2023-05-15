@@ -1,6 +1,6 @@
 # Simple Load Balancing
 
-A simple implementing of Load Balancing using Nginx + Node JS + Docker.
+A simple project to implementing Load Balancing using Nginx + Node JS + Docker.
 
 ## Installation
 Make sure you already install the docker & docker-compose,
@@ -26,10 +26,26 @@ _Round Robin Load Balancing :
 _Cache Request :
 [http://127.0.0.1/cache](http://127.0.0.1/cache)_
 
+## FYI
+The service is running for **6 ports (3300 - 3305)**, which whole of the services is connect to the _proxy_, and the api only can be accessed throught the proxy servers with the specific custom header that already define in the container of _API Service_.
+
+Check the results :
+
+- [http://127.0.0.1:3300](http://127.0.0.1:3300) 
+- [http://127.0.0.1:3301](http://127.0.0.1:3301) 
+- [http://127.0.0.1:3302](http://127.0.0.1:3302) 
+- [http://127.0.0.1:3303](http://127.0.0.1:3303) 
+- [http://127.0.0.1:3304](http://127.0.0.1:3304) 
+- [http://127.0.0.1:3305](http://127.0.0.1:3305) 
+
+## Authors
+- [@KILLYOURGUTS](https://github.com/KILLYOUGUTSXXX)
 
 ## Tech Stack
 
 [![My Skills](https://skillicons.dev/icons?i=nginx,nodejs,docker,bash,javascript,vscode,html,vim)](https://skillicons.dev)
+
+
 
 ## License
 
