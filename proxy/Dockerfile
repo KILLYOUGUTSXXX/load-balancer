@@ -9,7 +9,7 @@ RUN touch /etc/nginx/sites-available/resources
 RUN ln -s /etc/nginx/sites-available/resources /etc/nginx/sites-enabled/resources
 
 COPY ./config-proxy.conf /etc/nginx/nginx.conf
-COPY ./config-resource.conf /etc/nginx/sites-available/resources
+COPY ./config-resource.conf.local /etc/nginx/sites-available/resources
 COPY ./index.html /usr/share/nginx/html
 
 VOLUME /usr/share/nginx/html

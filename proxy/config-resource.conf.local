@@ -1,0 +1,24 @@
+upstream myapp {
+	server 173.12.15.1:4001;
+}
+
+# cache the proxy
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=killyourguts:10m inactive=3m;
+
+server {
+	listen 80;
+
+	location / {
+		# set the custom headers
+		proxy_set_header resource-from "https://github.com/KILLYOUGUTSXXX";
+		proxy_pass http://myapp; # passing the proxy to the upstream
+	}
+	
+	location /cache {
+		proxy_cache killyourguts; # define the cache
+		proxy_cache_min_uses 3; # set the minimal request before it caching
+		proxy_cache_valid 200 304 30s; # set the valid response status
+		proxy_cache_key $uri; # set the uri as the point of caching value
+		proxy_pass http://myapp; # passing the proxy to the upstream
+	}
+}
